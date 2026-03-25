@@ -72,3 +72,11 @@ dist/
 bruno-test/
 test-bruno/
 temp-bruno/
+
+# Spec-driven workflow internals
+# Keep durable feature docs in specs/, but ignore agent/prompt scaffolding and disposable execution artifacts.
+.specify/
+.github/agents/
+.github/prompts/
+specs/*/tasks.md
+specs/*/checklists/

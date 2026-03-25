@@ -1,0 +1,26 @@
+meta {
+    name: Patch Shareholder
+  type: http
+  seq: 1
+}
+
+patch {
+  url: {{baseUrl}}/shareholders/{{shareholderId}}
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "name": "{{PLACEHOLDER}}"
+  }
+}
+
+vars:pre-request {
+  shareholderId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

@@ -1,0 +1,31 @@
+meta {
+    name: Create Event
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/events
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "isPublic": false,
+    "capacity": 0,
+    "venue": {
+      "street": "{{PLACEHOLDER}}",
+      "city": "{{PLACEHOLDER}}",
+      "postCode": "{{PLACEHOLDER}}"
+    },
+    "description": "{{PLACEHOLDER}}",
+    "title": "{{PLACEHOLDER}}",
+    "date": "{{PLACEHOLDER}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

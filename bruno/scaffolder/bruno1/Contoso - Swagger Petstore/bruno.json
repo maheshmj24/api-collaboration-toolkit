@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Contoso - Swagger Petstore",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,16 @@
+meta {
+    name: Returns Pet Inventories By Status
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/store/inventory
+  body: none
+  auth: inherit
+}
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

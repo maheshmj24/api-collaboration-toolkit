@@ -1,195 +1,118 @@
-# Bruno Scaffolder
+# API Collaboration Toolkit
 
 ## Overview
 
-The **Bruno Scaffolder** is a PowerShell tool that automatically generates complete Bruno API collections from Swagger/OpenAPI JSON specifications. It eliminates the manual overhead of creating individual `.bru` files and ensures consistency with organizational standards.
+This repository contains tooling and guidance for creating source-controlled API collaboration assets from API contracts.
 
-This tool follows the [Bruno Collection Structure and Process](./BrunoCollectionProcess.md) guidelines to create properly organized collections.
+The goal is to eliminate API information silos and enable seamless collaboration across development, testing, and security review teams through standardized tooling and processes.
 
-## Features
+The current implementation focus is a Bruno collaboration workflow that combines:
 
-- ✅ **Automated Structure Generation**: Creates the complete folder structure following organization standards
-- ✅ **Environment Management**: Generates environment files for LOCAL, DEV, TST (and custom environments)
-- ✅ **OpenAPI 3.0+ Parsing**: Parses OpenAPI 3.0+ JSON specifications (Swagger 2.0 requires conversion)
-- ✅ **Smart Controller Organization**: Groups APIs by controller/tags automatically
-- ✅ **Parameter Handling**: Automatically configures path parameters, query parameters, and headers
-- ✅ **Request Body Support**: Sets up request bodies for POST/PUT/PATCH operations
-- ✅ **Customizable Configuration**: Flexible settings for different organizations
+- scaffolder-driven baseline collection generation from OpenAPI contracts
+- prompt-driven incremental request generation for newly added endpoints
 
-## Prerequisites
+## Vision
 
-- PowerShell 5.1 or later
-- **OpenAPI 3.0+ JSON file** (if you have Swagger 2.0, convert it first using online tools)
-- Bruno API client for testing generated collections
+Eliminate API information silos and enable seamless collaboration across development, testing, and security review teams through standardized tooling and processes.
 
-## Quick Start
+## Mission
 
-### PowerShell Command
+Establish a standardized process for maintaining API request collections as living documentation alongside codebases. The scaffolder accelerates baseline adoption from OpenAPI specifications, and the prompt workflow accelerates incremental endpoint request authoring.
 
-```powershell
-.\Generate-BrunoCollection.ps1 -SwaggerPath ".\swagger.json" -ApiName "Experience"
-```
+## Objectives
 
-## Usage Examples
+- Standardize API collaboration by defining a repeatable workflow where API collections are maintained as part of normal development rather than as an afterthought.
+- Accelerate onboarding by generating initial API request collections from OpenAPI specs so teams start with usable artifacts instead of building collections from scratch.
+- Break down information silos by ensuring up-to-date, executable API collections are maintained by the team and stored with the codebase.
+- Accelerate bug fixes and feature work by giving developers immediate API context when working in existing systems.
+- Enable security and QA teams with executable API requests instead of static documents or incomplete hand-maintained collections.
+- Reduce development friction by eliminating the need to hunt down original developers or recreate API requests manually.
 
-### Basic Usage
+The current focus is Bruno-based collaboration:
 
-```powershell
-# Generate collection for "Experience API" using defaults
-.\Generate-BrunoCollection.ps1 -SwaggerPath ".\swagger.json" -ApiName "Experience"
-```
+- process guidance for how Bruno collections should be organized and maintained
+- a PowerShell scaffolder that generates Bruno collections from OpenAPI 3.0+ JSON files
+- a reusable prompt workflow for generating one new `.bru` request artifact from endpoint source context
+- example contracts and generated output for validation and onboarding
 
-### Advanced Usage
-
-```powershell
-# Custom company name and environments
-.\Generate-BrunoCollection.ps1 `
-    -SwaggerPath ".\swagger.json" `
-    -ApiName "UserService" `
-    -CompanyName "Fabrikam" `
-    -Environments @("LOCAL", "DEV", "STAGING", "PROD")
-
-# With specific base URLs for environments
-$baseUrls = @{
-    "LOCAL" = "https://localhost:5001/api"
-    "DEV" = "https://dev-api.contoso.com"
-    "TST" = "https://test-api.contoso.com"
-}
-.\Generate-BrunoCollection.ps1 `
-    -SwaggerPath ".\api-docs.json" `
-    -ApiName "PaymentService" `
-    -BaseUrls $baseUrls
-```
-
-## Generated Output
-
-The scaffolder creates a complete Bruno collection structure following the [organizational standards](./Bruno.md):
+## Repository Structure
 
 ```text
 bruno/
-└── Contoso - <API Name>/
-    ├── bruno.json                 # Collection configuration
-    ├── environments/
-    │   ├── LOCAL.bru             # Local development environment
-    │   ├── DEV.bru               # Development environment
-    │   └── TST.bru               # Test environment
-    ├── <Controller1>/
-    │   ├── <Endpoint1>.bru       # API endpoint file
-    │   └── <Endpoint2>.bru
-    └── <Controller2>/
-        └── <Endpoint3>.bru
+├── process/
+│   └── PROCESS.md
+├── prompts/
+│   ├── bruno-request-generator.prompt.md
+│   └── README.md
+└── scaffolder/
+    ├── Generate-BrunoCollection.ps1
+    ├── bruno-scaffolder-config.json
+    ├── README.md
+    └── examples/
+
+examples/
+├── api-collaboration-toolkit.sln
+└── dotnet-api-sample/
+    └── README.md
 ```
 
-## Compatibility
+## Start Here
 
-### OpenAPI Version Support
+If you want to understand the expected Bruno collection structure and team workflow, read [bruno/process/PROCESS.md](bruno/process/PROCESS.md).
 
-- ✅ **OpenAPI 3.0+**: Fully supported
-- ⚠️ **Swagger 2.0**: Not directly supported - convert first
+If you want to generate a Bruno collection from an OpenAPI contract, read [bruno/scaffolder/README.md](bruno/scaffolder/README.md).
 
-### Converting Swagger 2.0 to OpenAPI 3.0+
+If you want to generate a single Bruno request file for a newly added endpoint using a prompt workflow, read [bruno/prompts/README.md](bruno/prompts/README.md).
 
-If you have a Swagger 2.0 file, convert it using:
+## Current Scope
 
-- [Swagger Editor](https://editor.swagger.io/) - Import and export as OpenAPI 3.0
-- [API Transformer](https://apimatic.io/transformer) - Online conversion tool
-- Swagger CLI: `swagger-codegen-cli generate -i swagger2.json -l openapi -o openapi3.json`
+This repository currently provides:
 
-## Configuration
+- a documented Bruno collaboration process
+- a PowerShell scaffolder for OpenAPI-to-Bruno baseline generation
+- a prompt workflow for single-endpoint `.bru` generation in existing collections
+- example inputs and reference outputs for verification
 
-### Default Settings
+Current support is Bruno collection lifecycle support (baseline scaffolding + incremental prompt-assisted request generation). The toolkit is intended to expand to additional API clients over time, but Bruno is the current supported client workflow.
 
-Customize organizational defaults by editing `bruno-scaffolder-config.json`:
+## Intended Audience
 
-- Company name
-- Standard environments
-- Base URL patterns
-- Naming conventions
+This repository is for engineers who:
 
-### Command Line Parameters
+- need a consistent way to store API collaboration artifacts in source control
+- want to generate Bruno collections from API contracts rather than maintain them manually
+- want to generate new endpoint request artifacts incrementally using prompt/agent workflow
+- need examples and process guidance for onboarding or review
 
-| Parameter      | Required | Description                    | Default                    |
-| -------------- | -------- | ------------------------------ | -------------------------- |
-| `SwaggerPath`  | ✅       | Path to swagger.json file      | -                          |
-| `ApiName`      | ✅       | Name for the API collection    | -                          |
-| `OutputPath`   | ❌       | Output directory               | `.\bruno`                  |
-| `CompanyName`  | ❌       | Company name for collection    | `Contoso`                  |
-| `Environments` | ❌       | Environment names to create    | `@("LOCAL", "DEV", "TST")` |
-| `BaseUrls`     | ❌       | Hash table of environment URLs | Auto-detected from swagger |
+## Contributing
 
-## Integration with Development Workflow
+This project is for contributors who want to improve API collaboration in a concrete way. If you have a specific idea, gap, or improvement in mind and are prepared to help drive it through design, implementation, and validation, your contribution is welcome.
 
-### During Development
+Good contributions typically include:
 
-1. Export swagger.json from your API
-2. Run the scaffolder to create Bruno collection
-3. Customize authentication, test data, and assertions
-4. Commit .bru files alongside your code
+- a clearly stated problem or improvement opportunity
+- a practical proposal for how to address it
+- execution through code, documentation, examples, or validation
 
-### Code Reviews
+Areas where contributors can add value include:
 
-- Include generated .bru files in pull requests
-- Follow the [development guidelines](./BrunoCollectionProcess.md#development-guidelines) for PR requirements
+- extending the toolkit to additional API clients over time
+- expanding OpenAPI request and schema support
+- improving request generation quality and edge-case handling
+- refining best practices for collection maintenance in source control
 
-### Team Onboarding
+The project is best suited to contributors who want to identify concrete improvements and help carry them through.
 
-- New team members get consistent, up-to-date API collections
-- Collections are automatically organized following team standards
+When changing scaffolder behavior or collection conventions:
 
-### CI/CD Integration (Optional)
+- update the relevant docs and examples
+- keep generated artifacts safe for source control
+- preserve contract alignment between the OpenAPI input and generated Bruno output
 
-- Integrate scaffolder to auto-update collections when APIs change
-- Ensure collections stay synchronized with API specifications
+## Related Documentation
 
-## Testing the Scaffolder
-
-Try with the included sample:
-
-```powershell
-.\Generate-BrunoCollection.ps1 -SwaggerPath ".\examples\sample-swagger.json" -ApiName "Experience"
-```
-
-This creates a sample collection demonstrating the expected output structure.
-
-## Benefits
-
-- **Time Savings**: Eliminates manual creation of dozens of .bru files
-- **Consistency**: Ensures all collections follow [organizational standards](./BrunoCollectionProcess.md)
-- **Accuracy**: Collections always match API specifications
-- **Maintenance**: Easy to regenerate when APIs evolve
-- **Team Alignment**: Everyone uses the same collection structure
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Execution Policy Error**:
-
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-
-2. **Swagger File Not Found**: Verify the file path and ensure it's valid JSON
-
-3. **Permission Denied**: Ensure you have write permissions to the output directory
-
-### Getting Help
-
-Run with `-Verbose` flag for detailed output:
-
-```powershell
-.\Generate-BrunoCollection.ps1 -SwaggerPath ".\swagger.json" -ApiName "Experience" -Verbose
-```
-
-## Files Overview
-
-- `Generate-BrunoCollection.ps1` - Main scaffolder script
-- `bruno-scaffolder-config.json` - Configuration defaults
-- `examples/` - Sample files and usage guide
-
-## Next Steps
-
-1. Generate your Bruno collection using the scaffolder
-2. Follow the [Bruno Collection Guidelines](./BrunoCollectionProcess.md) for customization
-3. Integrate into your development workflow
-4. Share with your team for consistent API testing
+- [bruno/process/PROCESS.md](bruno/process/PROCESS.md)
+- [bruno/scaffolder/README.md](bruno/scaffolder/README.md)
+- [bruno/scaffolder/examples/README.md](bruno/scaffolder/examples/README.md)
+- [bruno/prompts/README.md](bruno/prompts/README.md)
+- [examples/dotnet-api-sample/README.md](examples/dotnet-api-sample/README.md)

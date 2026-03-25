@@ -1,0 +1,21 @@
+meta {
+    name: Finds Pets By Tags
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/pet/findByTags
+  body: none
+  auth: inherit
+}
+
+params:query {
+  tags: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

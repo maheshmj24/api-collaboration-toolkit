@@ -1,0 +1,25 @@
+meta {
+    name: Post Shareholders
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/Shareholders
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "firstName": "{{PLACEHOLDER}}",
+    "phoneNumber": "{{PLACEHOLDER}}",
+    "lastName": "{{PLACEHOLDER}}",
+    "email": "{{PLACEHOLDER}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

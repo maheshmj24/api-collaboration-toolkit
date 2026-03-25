@@ -1,0 +1,20 @@
+meta {
+    name: Delete Purchase Order By Identifier
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{baseUrl}}/store/order/{{orderId}}
+  body: none
+  auth: inherit
+}
+vars:pre-request {
+  orderId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

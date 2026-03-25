@@ -1,0 +1,29 @@
+meta {
+    name: Create User
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/user
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "firstName": "{{PLACEHOLDER}}",
+    "username": "{{PLACEHOLDER}}",
+    "phone": "{{PLACEHOLDER}}",
+    "email": "{{PLACEHOLDER}}",
+    "userStatus": 0,
+    "id": 0,
+    "lastName": "{{PLACEHOLDER}}",
+    "password": "{{PLACEHOLDER}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

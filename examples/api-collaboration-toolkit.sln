@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet-api-sample", "dotnet-api-sample", "{E4EF8D06-F05B-AC97-DA6F-612EF6A283DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetApiSample", "dotnet-api-sample\DotnetApiSample.csproj", "{7B43C745-1E00-EDB3-B3EF-5836F0D392AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B43C745-1E00-EDB3-B3EF-5836F0D392AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B43C745-1E00-EDB3-B3EF-5836F0D392AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B43C745-1E00-EDB3-B3EF-5836F0D392AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B43C745-1E00-EDB3-B3EF-5836F0D392AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B43C745-1E00-EDB3-B3EF-5836F0D392AA} = {E4EF8D06-F05B-AC97-DA6F-612EF6A283DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C194CD0-D6DF-4259-91E6-76B67CD65DCA}
+	EndGlobalSection
+EndGlobal

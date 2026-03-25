@@ -1,0 +1,24 @@
+meta {
+    name: Get Shareholders By Shareholder Id
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/Shareholders/{{shareholderId}}
+  body: none
+  auth: inherit
+}
+headers {
+  x-correlation-id: {{PLACEHOLDER}}
+}
+
+vars:pre-request {
+  shareholderId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
