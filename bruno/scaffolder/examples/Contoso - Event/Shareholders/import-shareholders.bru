@@ -1,0 +1,24 @@
+meta {
+    name: Import Shareholders
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/shareholders/import
+  body: json
+  auth: inherit
+}
+body:json {
+  [{
+    "shares": 0,
+    "email": "{{PLACEHOLDER}}",
+    "name": "{{PLACEHOLDER}}"
+  }]
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

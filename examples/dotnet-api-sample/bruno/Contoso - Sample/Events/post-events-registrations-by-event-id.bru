@@ -1,0 +1,32 @@
+meta {
+    name: Post Events Registrations By Event Id
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/Events/{{eventId}}/registrations
+  body: json
+  auth: inherit
+}
+headers {
+  x-correlation-id: {{PLACEHOLDER}}
+}
+
+body:json {
+  {
+    "ticketType": "{{PLACEHOLDER}}",
+    "attendeeEmail": "{{PLACEHOLDER}}",
+    "attendeeName": "{{PLACEHOLDER}}"
+  }
+}
+
+vars:pre-request {
+  eventId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

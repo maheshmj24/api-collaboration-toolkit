@@ -1,0 +1,27 @@
+meta {
+    name: Patch Shareholders By Shareholder Id
+  type: http
+  seq: 1
+}
+
+patch {
+  url: {{baseUrl}}/api/Shareholders/{{shareholderId}}
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "phoneNumber": "{{PLACEHOLDER}}",
+    "email": "{{PLACEHOLDER}}"
+  }
+}
+
+vars:pre-request {
+  shareholderId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

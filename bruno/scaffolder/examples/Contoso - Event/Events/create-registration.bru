@@ -1,0 +1,25 @@
+meta {
+    name: Create Registration
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/registrations
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "eventId": "{{PLACEHOLDER}}",
+    "promoCode": "{{PLACEHOLDER}}",
+    "attendeeEmail": "{{PLACEHOLDER}}",
+    "attendeeName": "{{PLACEHOLDER}}"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

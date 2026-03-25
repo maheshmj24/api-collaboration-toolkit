@@ -1,0 +1,26 @@
+meta {
+    name: Updates A Pet In The Store With Form Data
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/pet/{{petId}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~name: {{PLACEHOLDER}}
+  ~status: {{PLACEHOLDER}}
+}
+
+vars:pre-request {
+  petId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

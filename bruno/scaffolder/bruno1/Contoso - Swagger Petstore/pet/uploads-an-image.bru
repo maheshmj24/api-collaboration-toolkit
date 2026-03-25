@@ -1,0 +1,31 @@
+meta {
+    name: Uploads An Image
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/pet/{{petId}}/uploadImage
+  body: json
+  auth: inherit
+}
+
+params:query {
+  ~additionalMetadata: {{PLACEHOLDER}}
+}
+
+body:json {
+  {
+    "example": "{{PLACEHOLDER}}"
+  }
+}
+
+vars:pre-request {
+  petId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

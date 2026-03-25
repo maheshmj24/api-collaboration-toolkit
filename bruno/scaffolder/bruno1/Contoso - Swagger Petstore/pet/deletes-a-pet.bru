@@ -1,0 +1,24 @@
+meta {
+    name: Deletes A Pet
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{baseUrl}}/pet/{{petId}}
+  body: none
+  auth: inherit
+}
+headers {
+  api_key: {{PLACEHOLDER}}
+}
+
+vars:pre-request {
+  petId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

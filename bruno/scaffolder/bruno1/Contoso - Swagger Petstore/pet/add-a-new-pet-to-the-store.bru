@@ -1,0 +1,33 @@
+meta {
+    name: Add A New Pet To The Store
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/pet
+  body: json
+  auth: inherit
+}
+body:json {
+  {
+    "id": 0,
+    "photoUrls": "{{PLACEHOLDER}}",
+    "status": "{{PLACEHOLDER}}",
+    "tags": {
+      "id": 0,
+      "name": "{{PLACEHOLDER}}"
+    },
+    "name": "{{PLACEHOLDER}}",
+    "category": {
+      "id": 0,
+      "name": "{{PLACEHOLDER}}"
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

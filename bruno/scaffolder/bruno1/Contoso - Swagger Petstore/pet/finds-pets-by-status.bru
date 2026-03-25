@@ -1,0 +1,21 @@
+meta {
+    name: Finds Pets By Status
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/pet/findByStatus
+  body: none
+  auth: inherit
+}
+
+params:query {
+  status: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

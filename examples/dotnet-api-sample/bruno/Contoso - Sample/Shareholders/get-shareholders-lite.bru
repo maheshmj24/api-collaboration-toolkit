@@ -1,0 +1,26 @@
+meta {
+    name: Get Shareholders Lite
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/Shareholders/lite
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~page: {{PLACEHOLDER}}
+  ~pageSize: {{PLACEHOLDER}}
+}
+
+headers {
+  x-correlation-id: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

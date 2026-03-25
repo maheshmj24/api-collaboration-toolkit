@@ -1,0 +1,20 @@
+meta {
+    name: Find Purchase Order By ID
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/store/order/{{orderId}}
+  body: none
+  auth: inherit
+}
+vars:pre-request {
+  orderId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

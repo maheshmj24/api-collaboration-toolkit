@@ -1,0 +1,52 @@
+meta {
+    name: Post Events Sessions Search By Event Id
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/Events/{{eventId}}/sessions/search
+  body: json
+  auth: inherit
+}
+
+params:query {
+  ~from: {{PLACEHOLDER}}
+  ~to: {{PLACEHOLDER}}
+  ~page: {{PLACEHOLDER}}
+  ~pageSize: {{PLACEHOLDER}}
+  ~includeSoldOut: {{PLACEHOLDER}}
+  ~sortBy: {{PLACEHOLDER}}
+  ~sortDirection: {{PLACEHOLDER}}
+}
+
+headers {
+  x-correlation-id: {{PLACEHOLDER}}
+  x-tenant-id: {{PLACEHOLDER}}
+}
+
+body:json {
+  {
+    "tags": [
+      "{{PLACEHOLDER}}"
+    ],
+    "languages": [
+      "{{PLACEHOLDER}}"
+    ],
+    "deliveryModes": [
+      "{{PLACEHOLDER}}"
+    ],
+    "minimumRating": {{PLACEHOLDER}},
+    "speakerQuery": "{{PLACEHOLDER}}"
+  }
+}
+
+vars:pre-request {
+  eventId: {{PLACEHOLDER}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+

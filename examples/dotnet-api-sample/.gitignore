@@ -1,0 +1,20 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Rider / ReSharper
+.idea/
+_ReSharper*/
+*.DotSettings.user
+
+# VS Code workspace overrides
+.vscode/
+
+# Logs and temp
+*.log
+*.tmp
